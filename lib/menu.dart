@@ -8,9 +8,9 @@ class MyHomePage extends StatelessWidget {
   final String className = 'PBP D'; // Kelas
 
   final List<ItemHomepage> items = [
-    ItemHomepage("All Products", Icons.newspaper),
-    ItemHomepage("My Products", Icons.add),
-    ItemHomepage("Create Product", Icons.logout),
+    ItemHomepage("All Products", Icons.newspaper, Colors.blue),
+    ItemHomepage("My Products", Icons.add, Colors.green),
+    ItemHomepage("Create Product", Icons.logout, Colors.red),
   ];
 
   @override
@@ -124,8 +124,9 @@ class InfoCard extends StatelessWidget {
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color; // warna khusus untuk setiap item
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.color);
 }
 
 class ItemCard extends StatelessWidget {
@@ -137,9 +138,14 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Tentukan warna latar belakang sesuai properti item.color
+    final Color bg = item.color;
+    // Pilih warna teks/ikon yang kontras (putih/ hitam) berdasarkan luminance
+    final Color fg = bg.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+
     return Material(
-      // Menentukan warna latar belakang dari tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
+      // Menentukan warna latar belakang dari item
+      color: bg,
       // Membuat sudut kartu melengkung.
       borderRadius: BorderRadius.circular(12),
 
@@ -161,12 +167,12 @@ class ItemCard extends StatelessWidget {
               // Menyusun ikon dan teks di tengah kartu.
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(item.icon, color: Colors.white, size: 30.0),
+                Icon(item.icon, color: fg, size: 30.0),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: fg),
                 ),
               ],
             ),
