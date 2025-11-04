@@ -1,6 +1,6 @@
 # KickOff Shop
 
-A new Flutter project.
+KickOff Shop adalah project Flutter sederhana mengenai toko yang menjual perlengkapan sepak bola. Tugas ini dikerjakan oleh Nezzaluna Azzahra dengan NPM 2406495741 dari kelas PBP-D.
 
 ## Getting Started
 
