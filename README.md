@@ -23,11 +23,27 @@ samples, guidance on mobile development, and a full API reference.
 Widget tree pada Flutter adalah struktur hierarki yang menggambarkan bagaimana widget-widget dalam aplikasi diatur dan saling berhubungan satu sama lain. Setiap widget dalam Flutter dapat memiliki satu atau lebih child widget yang berada di bawahnya dalam hierarki, membentuk sebuah pohon (tree). Hubungan parent-child (induk-anak) bekerja dengan cara parent widget dapat mengandung satu atau lebih child widget, dan widget anak tersebut dapat memiliki properti atau perilaku yang dipengaruhi oleh widget induknya.
 - Sebutkan semua widget yang kamu gunakan dalam proyek ini dan jelaskan fungsinya.  
 Widget yang saya gunakan dalam proyek ini diantaranya adalah MaterialApp, Scaffold, AppBar, Drawer, ListView, ListTile, Icon, Text, Center, Column, ElevatedButton, dan lainnya. Fungsi dari masing-masing widget tersebut adalah sebagai berikut:  
-  - MaterialApp: Sebagai root widget yang menyediakan struktur dasar aplikasi dengan desain Material.
-  - Scaffold: Menyediakan struktur dasar halaman dengan app bar, drawer, dan body.
-  - AppBar: Menampilkan bar di bagian atas halaman yang biasanya berisi judul dan aksi.
-  - Drawer: Menyediakan menu samping yang dapat diakses dengan menggeser dari tepi layar.
-  - ListView: Menampilkan daftar item yang dapat digulir secara vertikal.
+  - MaterialApp: Sebagai root widget yang menyediakan struktur dasar aplikasi dengan desain Material.  
+  - Scaffold: Menyediakan struktur dasar untuk halaman aplikasi, termasuk AppBar, Drawer, dan body.  
+  - AppBar: Menampilkan bilah aplikasi di bagian atas layar dengan judul dan tindakan.  
+  - StatelessWidget: Widget yang tidak memiliki state dan tampilannya tetap.
+  - ThemeData: Mengatur tema visual aplikasi seperti warna dan font.
+  - ColorScheme: Mengelola skema warna aplikasi.
+  - Text: Menampilkan teks di layar.
+  - TextStyle: Mengatur gaya teks seperti ukuran, warna, dan font.
+  - Center: Menempatkan child widget di tengah layar.
+  - Column: Mengatur child widget secara vertikal.
+  - Row: Mengatur child widget secara horizontal.
+  - Padding: Memberikan ruang kosong di sekitar widget.
+  - SizedBox: Memberikan ruang kosong dengan ukuran tertentu.
+  - GridView.count: Menampilkan daftar widget dalam bentuk grid dengan jumlah kolom tertentu.
+  - Card: Menampilkan konten dalam bentuk kartu dengan bayangan.
+  - Container: Widget serbaguna untuk mengatur layout, dekorasi, dan posisi child widget.
+  - Icon: Menampilkan ikon grafis.
+  - Material: Memberikan efek material seperti ripple pada interaksi.
+  - InkWell: Menangani interaksi sentuhan dengan efek visual.
+  - ScaffoldMessenger: Menampilkan pesan sementara di layar.
+  - SnackBar: Menampilkan pesan singkat di bagian bawah layar.
 
 - Apa fungsi dari widget MaterialApp? Jelaskan mengapa widget ini sering digunakan sebagai widget root.  
 Fungsi dari widget MaterialApp adalah untuk menyediakan struktur dasar dan konfigurasi dasar untuk aplikasi Flutter yang mengikuti desain Material Design. Widget ini mengatur elemen-elemen tingkat tinggi seperti tema, judul, navigasi, dan lainnya. Widget ini sering digunakan sebagai widget root karena menyediakan banyak fitur penting yang diperlukan untuk membangun aplikasi yang konsisten dengan pedoman desain Material, sehingga memudahkan pengembangan aplikasi dengan tampilan yang terstruktur.
