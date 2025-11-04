@@ -22,7 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 - Jelaskan apa itu widget tree pada Flutter dan bagaimana hubungan parent-child (induk-anak) bekerja antar widget.  
 Widget tree pada Flutter adalah struktur hierarki yang menggambarkan bagaimana widget-widget dalam aplikasi diatur dan saling berhubungan satu sama lain. Setiap widget dalam Flutter dapat memiliki satu atau lebih child widget yang berada di bawahnya dalam hierarki, membentuk sebuah pohon (tree). Hubungan parent-child (induk-anak) bekerja dengan cara parent widget dapat mengandung satu atau lebih child widget, dan widget anak tersebut dapat memiliki properti atau perilaku yang dipengaruhi oleh widget induknya.
 - Sebutkan semua widget yang kamu gunakan dalam proyek ini dan jelaskan fungsinya.  
-Widget yang saya gunakan dalam proyek ini diantaranya adalah MaterialApp, Scaffold, AppBar, Drawer, ListView, ListTile, Icon, Text, Center, Column, ElevatedButton, dan lainnya. Fungsi dari masing-masing widget tersebut adalah sebagai berikut:  
+Widget yang saya gunakan dalam proyek ini beserta fungsi dari masing-masing widget tersebut adalah sebagai berikut:  
   - MaterialApp: Sebagai root widget yang menyediakan struktur dasar aplikasi dengan desain Material.  
   - Scaffold: Menyediakan struktur dasar untuk halaman aplikasi, termasuk AppBar, Drawer, dan body.  
   - AppBar: Menampilkan bilah aplikasi di bagian atas layar dengan judul dan tindakan.  
