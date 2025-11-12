@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kickoff_shop/widgets/left_drawer.dart';
-import 'package:kickoff_shop/widgets/product_card.dart';
 import 'package:kickoff_shop/screens/productlist_form.dart';
 
 class MyHomePage extends StatelessWidget {
