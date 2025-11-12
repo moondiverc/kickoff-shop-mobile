@@ -47,7 +47,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.post_add),
+            leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Create Product'),
             onTap: () {
               Navigator.push(

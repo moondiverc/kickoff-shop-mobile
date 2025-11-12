@@ -13,7 +13,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
   String _name = "";
   double _price = 0; // default
   String _description = "";
-  String _category = "apparel"; // default
+  String _category = ""; // default
   String _thumbnail = "";
   bool _isFeatured = false; // default
 
@@ -136,7 +136,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  value: _category,
+                  initialValue: _category.isEmpty ? null : _category,
                   items: _categories
                       .map(
                         (cat) => DropdownMenuItem(
@@ -147,8 +147,14 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() {
-                      _category = newValue!;
+                      _category = newValue ?? "";
                     });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Kategori tidak boleh kosong!";
+                    }
+                    return null;
                   },
                 ),
               ),
@@ -169,6 +175,12 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       _thumbnail = value!;
                     });
                   },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Nama produk tidak boleh kosong!";
+                    }
+                    return null;
+                  },
                 ),
               ),
 
@@ -176,7 +188,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SwitchListTile(
-                  title: const Text("Tandai sebagai Berita Unggulan"),
+                  title: const Text("Tandai sebagai Featured Product"),
                   value: _isFeatured,
                   onChanged: (bool value) {
                     setState(() {
