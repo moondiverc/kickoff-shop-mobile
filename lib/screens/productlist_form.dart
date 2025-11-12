@@ -12,9 +12,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   double _price = 0; // default
+  int _stock = 0; // default
   String _description = "";
   String _category = ""; // default
   String _thumbnail = "";
+  double _rating = 0; // default
   bool _isFeatured = false; // default
 
   final List<String> _categories = [
@@ -95,6 +97,40 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     final parsed = double.tryParse(value.replaceAll(',', '.'));
                     if (parsed == null) {
                       return "Masukkan angka yang valid untuk harga!";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              // === Stock ===
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  // gunakan keyboard numeric untuk input stok
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: "Stok Produk",
+                    labelText: "Stock",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  // buatlah agar menyimpan nilai stok ke _stock
+                  onChanged: (String? value) {
+                    setState(() {
+                      final parsed = int.tryParse(value!.replaceAll(',', '.'));
+                      _stock = parsed ?? 0;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Stok produk tidak boleh kosong!";
+                    }
+                    final parsed = int.tryParse(value.replaceAll(',', '.'));
+                    if (parsed == null) {
+                      return "Masukkan angka yang valid untuk stok!";
                     }
                     return null;
                   },
@@ -184,6 +220,43 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 ),
               ),
 
+              // === Rating ===
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  // gunakan keyboard numeric untuk input stok
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: "Rating Produk",
+                    labelText: "Rating",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  // buatlah agar menyimpan nilai stok ke _stock
+                  onChanged: (String? value) {
+                    setState(() {
+                      final parsed = double.tryParse(
+                        value!.replaceAll(',', '.'),
+                      );
+                      _rating = parsed ?? 0;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Rating produk tidak boleh kosong!";
+                    }
+                    final parsed = double.tryParse(value.replaceAll(',', '.'));
+                    if (parsed == null || parsed < 0 || parsed > 5) {
+                      return "Masukkan angka yang valid untuk rating!";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
               // === Is Featured ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -221,9 +294,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
                                   children: [
                                     Text('Judul: $_name'),
                                     Text('Harga: $_price'),
+                                    Text('Stok: $_stock'),
                                     Text('Isi: $_description'),
                                     Text('Kategori: $_category'),
                                     Text('Thumbnail: $_thumbnail'),
+                                    Text('Rating: $_rating'),
                                     Text(
                                       'Unggulan: ${_isFeatured ? "Ya" : "Tidak"}',
                                     ),
