@@ -11,7 +11,7 @@ class ProductFormPage extends StatefulWidget {
 class _ProductFormPageState extends State<ProductFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
-  double _price = 0; // default
+  int _price = 0; // default
   int _stock = 0; // default
   String _description = "";
   String _category = ""; // default
@@ -81,12 +81,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  // buatlah agar menyimpan nilai harga ke _price
                   onChanged: (String? value) {
                     setState(() {
-                      final parsed = double.tryParse(
-                        value!.replaceAll(',', '.'),
-                      );
+                      final parsed = int.tryParse(value!.replaceAll(',', '.'));
                       _price = parsed ?? 0;
                     });
                   },
@@ -94,7 +91,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     if (value == null || value.isEmpty) {
                       return "Harga produk tidak boleh kosong!";
                     }
-                    final parsed = double.tryParse(value.replaceAll(',', '.'));
+                    final parsed = int.tryParse(value.replaceAll(',', '.'));
                     if (parsed == null) {
                       return "Masukkan angka yang valid untuk harga!";
                     }
@@ -200,7 +197,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "URL Thumbnail (opsional)",
+                    hintText: "URL Thumbnail",
                     labelText: "URL Thumbnail",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -213,7 +210,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return "Nama produk tidak boleh kosong!";
+                      return "Thumbnail produk tidak boleh kosong!";
+                    } else if (!Uri.tryParse(value)!.isAbsolute) {
+                      return "Masukkan URL yang valid!";
                     }
                     return null;
                   },
@@ -270,6 +269,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   },
                 ),
               ),
+
               // === Tombol Simpan ===
               Align(
                 alignment: Alignment.bottomCenter,
