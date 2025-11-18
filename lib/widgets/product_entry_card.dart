@@ -67,16 +67,27 @@ class ProductEntryCard extends StatelessWidget {
                     // Price
                     Row(
                       children: [
-                        const Icon(Icons.price_check, size: 16, color: Colors.black54),
+                        const Icon(
+                          Icons.price_check,
+                          size: 16,
+                          color: Colors.black54,
+                        ),
                         const SizedBox(width: 6),
-                        Text('Rp ${product.price}', style: const TextStyle(fontWeight: FontWeight.w600)),
+                        Text(
+                          'Rp ${product.price}',
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
 
                     // Stock
                     Row(
                       children: [
-                        const Icon(Icons.inventory_2, size: 16, color: Colors.black54),
+                        const Icon(
+                          Icons.inventory_2,
+                          size: 16,
+                          color: Colors.black54,
+                        ),
                         const SizedBox(width: 6),
                         Text('${product.stock}'),
                       ],
