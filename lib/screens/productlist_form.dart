@@ -58,6 +58,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       _name = value!;
                     });
                   },
+                  onSaved: (String? value) {
+                    _name = value ?? '';
+                  },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return "Nama produk tidak boleh kosong!";
@@ -86,6 +89,13 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       final parsed = int.tryParse(value!.replaceAll(',', '.'));
                       _price = parsed ?? 0;
                     });
+                  },
+                  onSaved: (String? value) {
+                    _price =
+                        double.tryParse(
+                          (value ?? '').replaceAll(',', '.'),
+                        )?.toInt() ??
+                        0;
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
@@ -121,6 +131,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       _stock = parsed ?? 0;
                     });
                   },
+                  onSaved: (String? value) {
+                    _stock =
+                        int.tryParse((value ?? '').replaceAll(',', '.')) ?? 0;
+                  },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return "Stok produk tidak boleh kosong!";
@@ -149,6 +163,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     setState(() {
                       _description = value!;
                     });
+                  },
+                  onSaved: (String? value) {
+                    _description = value ?? '';
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
@@ -183,6 +200,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       _category = newValue ?? "";
                     });
                   },
+                  onSaved: (String? value) {
+                    _category = value ?? '';
+                  },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return "Kategori tidak boleh kosong!";
@@ -207,6 +227,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     setState(() {
                       _thumbnail = value!;
                     });
+                  },
+                  onSaved: (String? value) {
+                    _thumbnail = value ?? '';
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
@@ -242,6 +265,11 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       );
                       _rating = parsed ?? 0;
                     });
+                  },
+                  onSaved: (String? value) {
+                    _rating =
+                        double.tryParse((value ?? '').replaceAll(',', '.')) ??
+                        0;
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
@@ -281,9 +309,13 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         Colors.blue[700],
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        showDialog(
+                        // simpan semua field via onSaved
+                        _formKey.currentState!.save();
+
+                        // tampilkan dialog dengan nilai yang sudah disimpan
+                        await showDialog(
                           context: context,
                           builder: (context) {
                             return AlertDialog(
@@ -316,7 +348,19 @@ class _ProductFormPageState extends State<ProductFormPage> {
                             );
                           },
                         );
+
+                        // reset form fields dan bersihkan state setelah dialog ditutup
                         _formKey.currentState!.reset();
+                        setState(() {
+                          _name = '';
+                          _price = 0;
+                          _stock = 0;
+                          _description = '';
+                          _category = '';
+                          _thumbnail = '';
+                          _rating = 0;
+                          _isFeatured = false;
+                        });
                       }
                     },
                     child: const Text(
