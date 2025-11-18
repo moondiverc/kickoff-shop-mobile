@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kickoff_shop/screens/productlist_form.dart';
 import 'package:kickoff_shop/screens/menu.dart';
+import 'package:kickoff_shop/screens/product_entry_list.dart';
 
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.
@@ -35,6 +36,22 @@ class ItemCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProductFormPage()),
+            );
+          } else if (item.name == "All Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const ProductEntryListPage(mineOnly: false),
+              ),
+            );
+          } else if (item.name == "My Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const ProductEntryListPage(mineOnly: true),
+              ),
             );
           }
         },

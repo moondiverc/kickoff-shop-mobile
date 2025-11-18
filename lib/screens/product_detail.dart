@@ -6,24 +6,24 @@ class ProductDetailPage extends StatelessWidget {
 
   const ProductDetailPage({super.key, required this.product});
 
-  String _formatDate(DateTime date) {
-    // Simple date formatter without intl package
-    final months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    return '${date.day} ${months[date.month - 1]} ${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
-  }
+  // String _formatDate(DateTime date) {
+  //   // Simple date formatter without intl package
+  //   final months = [
+  //     'Jan',
+  //     'Feb',
+  //     'Mar',
+  //     'Apr',
+  //     'May',
+  //     'Jun',
+  //     'Jul',
+  //     'Aug',
+  //     'Sep',
+  //     'Oct',
+  //     'Nov',
+  //     'Dec',
+  //   ];
+  //   return '${date.day} ${months[date.month - 1]} ${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +115,51 @@ class ProductDetailPage extends StatelessWidget {
                       //   _formatDate(product.createdAt),
                       //   style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                       // ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+
+                  // Price / Stock / Rating
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Price
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.price_check,
+                            size: 16,
+                            color: Colors.black54,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            'Rp ${product.price}',
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+
+                      // Stock
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.inventory_2,
+                            size: 16,
+                            color: Colors.black54,
+                          ),
+                          const SizedBox(width: 6),
+                          Text('${product.stock}'),
+                        ],
+                      ),
+
+                      // Rating
+                      Row(
+                        children: [
+                          const Icon(Icons.star, size: 16, color: Colors.amber),
+                          const SizedBox(width: 6),
+                          Text('${product.rating}/5'),
+                        ],
+                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
