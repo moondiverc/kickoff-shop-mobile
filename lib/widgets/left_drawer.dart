@@ -58,7 +58,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_reaction_rounded),
+            leading: const Icon(Icons.list_alt_rounded),
             title: const Text('All Products List'),
             onTap: () {
               // Route to product list page
@@ -72,7 +72,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_reaction_rounded),
+            leading: const Icon(Icons.person_outlined),
             title: const Text('My Products List'),
             onTap: () {
               // Route to product list page
