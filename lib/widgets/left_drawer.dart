@@ -66,7 +66,7 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      const ProductEntryListPage(mineOnly: false),
+                      const ProductEntryListPage(initialFilter: 'all'),
                 ),
               );
             },
@@ -80,7 +80,7 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      const ProductEntryListPage(mineOnly: true),
+                      const ProductEntryListPage(initialFilter: 'my'),
                 ),
               );
             },
