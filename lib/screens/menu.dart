@@ -162,26 +162,27 @@ class ItemCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}")),
             );
-              // Navigate based on item name
-              if (item.name == "Create Product") {
+          // Navigate based on item name
+          if (item.name == "Create Product") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProductFormPage()),
             );
-              } else if (item.name == "All Products") {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProductEntryListPage(initialFilter: 'all'),
-                  ),
-                );
-              } else if (item.name == "My Products") {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProductEntryListPage(initialFilter: 'my'),
-                  ),
-                );
+          } else if (item.name == "All Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    ProductEntryListPage(initialFilter: 'all'),
+              ),
+            );
+          } else if (item.name == "My Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductEntryListPage(initialFilter: 'my'),
+              ),
+            );
           }
         },
         // Container untuk menyimpan Icon dan Text
