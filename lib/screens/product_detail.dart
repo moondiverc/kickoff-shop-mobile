@@ -190,7 +190,6 @@ class ProductDetailPage extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton.icon(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back),
                       label: const Text(
                         'Back to List',
                         style: TextStyle(color: Colors.white),
