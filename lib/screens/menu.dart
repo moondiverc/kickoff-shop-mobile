@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kickoff_shop/widgets/left_drawer.dart';
 import 'package:kickoff_shop/screens/productlist_form.dart';
+import 'package:kickoff_shop/screens/product_entry_list.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -10,8 +11,8 @@ class MyHomePage extends StatelessWidget {
   final String className = 'PBP D'; // Kelas
 
   final List<ItemHomepage> items = [
-    ItemHomepage("All Products", Icons.shopping_cart, Colors.blue),
-    ItemHomepage("My Products", Icons.shopping_cart_outlined, Colors.green),
+    ItemHomepage("All Products", Icons.shopping_cart, Colors.red),
+    ItemHomepage("My Products", Icons.shopping_cart_outlined, Colors.red),
     ItemHomepage("Create Product", Icons.add_shopping_cart, Colors.red),
   ];
 
@@ -161,11 +162,26 @@ class ItemCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}")),
             );
-          if (item.name == "Create Product") {
+              // Navigate based on item name
+              if (item.name == "Create Product") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProductFormPage()),
             );
+              } else if (item.name == "All Products") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductEntryListPage(initialFilter: 'all'),
+                  ),
+                );
+              } else if (item.name == "My Products") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductEntryListPage(initialFilter: 'my'),
+                  ),
+                );
           }
         },
         // Container untuk menyimpan Icon dan Text

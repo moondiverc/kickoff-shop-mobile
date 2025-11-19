@@ -37,7 +37,8 @@ class ItemCard extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => ProductFormPage()),
             );
-          } else if (item.name == "All Products") {
+          }
+          if (item.name == "All Products") {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -45,7 +46,8 @@ class ItemCard extends StatelessWidget {
                     const ProductEntryListPage(initialFilter: 'all'),
               ),
             );
-          } else if (item.name == "My Products") {
+          }
+          if (item.name == "My Products") {
             Navigator.push(
               context,
               MaterialPageRoute(
