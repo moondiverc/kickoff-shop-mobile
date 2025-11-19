@@ -29,8 +29,8 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('News Detail'),
-        backgroundColor: Colors.indigo,
+        title: const Text('Product Detail'),
+        backgroundColor: Colors.blueAccent[700],
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -183,6 +183,24 @@ class ProductDetailPage extends StatelessWidget {
                     style: const TextStyle(fontSize: 16.0, height: 1.6),
                     textAlign: TextAlign.justify,
                   ),
+                  const SizedBox(height: 16),
+
+                  // Back button to return to the product list
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: ElevatedButton.icon(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back),
+                      label: const Text(
+                        'Back to List',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                    ),
+                  ),
+
                   const SizedBox(height: 24),
                 ],
               ),
