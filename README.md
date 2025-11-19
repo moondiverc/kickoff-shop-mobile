@@ -89,7 +89,7 @@ samples, guidance on mobile development, and a full API reference.
 - Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.  
   Membuat halaman ProductEntryDetailPage yang menampilkan detail produk ketika user mengetuk salah satu produk pada halaman daftar. Halaman ini menampilkan informasi lengkap tentang produk, termasuk nama, deskripsi, gambar, kategori, status fitur, rating, harga, dan stok.
 - Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login.  
-  Menambahkan parameter mineOnly pada halaman ProductEntryListPage untuk memfilter produk berdasarkan pengguna yang sedang login. Menggunakan instance CookieRequest untuk mendapatkan informasi pengguna saat ini dan menampilkan hanya produk yang dimiliki oleh pengguna tersebut.
+  Membuat fungsi baru di views.py pada Django untuk memfilter produk berdasarkan pengguna yang login. Kemudian pada Flutter, membuat parameter baru pada ProductEntryListPage untuk menerima json yang sudah difilter berdasarkan user yang login.
 
 **Jawaban pertanyaan**
 
